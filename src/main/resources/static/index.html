@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jsForIndex.js"></script>
+</head>
+<body>
+<h1>Order Tickets</h1>
+
+<p>
+    <label for="choose">Choose a Movie:</label>
+    <select id="choose">
+        <option style="display:none" value="">Choose movie here...</option>
+        <option>Casablanca</option>
+        <option>Fort Apache</option>
+        <option>Apocolypse Now</option>
+    </select>
+    <span id="chooseError"></span>
+</p>
+
+<p>
+    <label for="amount">Amount</label>
+    <input type="text" id="amount" size="2">
+    <span id="amountError"></span>
+</p>
+
+<table>
+    <tr>
+        <td>
+            <label for="fName">Firstname</label>
+        </td>
+        <td>
+            <input type="text" id="fName">
+            <span id="fNameError"></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label for="lName">Lastname</label>
+        </td>
+        <td>
+            <input type="text" id="lName">
+            <span id="lNameError"></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label for="tel">Tel</label>
+        </td>
+        <td>
+            <input type="text" id="tel">
+            <span id="telError"></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label for="email">Email</label>
+        </td>
+        <td>
+            <input type="email" id="email">
+            <span id="emailError"></span>
+        </td>
+    </tr>
+</table>
+
+<button onclick="buyTicket()">Buy ticket</button>
+
+<h2>All tickets</h2>
+<div id="arrayField"></div>
+
+<button onclick="deleteTickets()">Delete all tickets</button>
+</body>
+</html>

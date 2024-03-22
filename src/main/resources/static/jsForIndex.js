@@ -94,6 +94,7 @@ function buyTicket() {
             tel : innTel,
             email : innEmail
         }
+        fetch("/lagre", purchasedTicket).then(purchasedTicket => purchasedTicket);
         tickets.push(purchasedTicket);
         document.getElementById("choose").value = "";
         document.getElementById("amount").value = "";
@@ -111,6 +112,7 @@ function buyTicket() {
             out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
             out += "</tr>";
         }
+
         document.getElementById("arrayField").innerHTML = out;
         chooseFilled = false;
         amountFilled = false;

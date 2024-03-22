@@ -22,7 +22,6 @@ class TicketPurchase {
 
 public class ArrayClassThing {
     public static void main(String[] args) {
-        ArrayList<TicketPurchase> boughtTicket = new ArrayList<>();
 
     }
 }

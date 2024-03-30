@@ -94,7 +94,9 @@ function buyTicket() {
             tel : innTel,
             email : innEmail
         }
-        fetch("/lagre", purchasedTicket).then(purchasedTicket => purchasedTicket);
+        $.post("/save", purchasedTicket, function(){
+            getAll();
+        });
         tickets.push(purchasedTicket);
         document.getElementById("choose").value = "";
         document.getElementById("amount").value = "";
@@ -103,14 +105,21 @@ function buyTicket() {
         document.getElementById("tel").value = "";
         document.getElementById("email").value = "";
 
-        let out = "<table><tr>" +
-            "<th>Movie</th><th>Amount</th><th>Firstname</th><th>Lastname</th><th>Tel</th><th>Email</th>" +
-            "</tr>";
+        function getAll() {
+            $.get( "/getAll", function( data ) {
+                printTickets();
+            });
+        }
+        function printTickets(){
+            let out = "<table><tr>" +
+                "<th>Movie</th><th>Amount</th><th>Firstname</th><th>Lastname</th><th>Tel</th><th>Email</th>" +
+                "</tr>";
 
-        for (let i=0; i<tickets.length; i++) {
-            out += "<tr>";
-            out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
-            out += "</tr>";
+            for (let i=0; i<tickets.length; i++) {
+                out += "<tr>";
+                out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
+                out += "</tr>";
+            }
         }
 
         document.getElementById("arrayField").innerHTML = out;
@@ -127,5 +136,6 @@ allfilled = false;
 
 function deleteTickets() {
     tickets = [];
+    $.get()
     document.getElementById("arrayField").innerHTML = "";
 }

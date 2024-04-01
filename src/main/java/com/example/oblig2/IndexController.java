@@ -10,14 +10,19 @@ import java.util.List;
 @RestController
 
 public class IndexController {
-    private final List<TicketPurchase> allTickets = new ArrayList<>();
+    private final List<ArrayClassThing> allTickets = new ArrayList<>();
     @PostMapping("/save")
-    public void saveTicket(TicketPurchase purchasedTicket){
+    public void saveTicket(ArrayClassThing purchasedTicket){
         allTickets.add(purchasedTicket);
     }
 
     @GetMapping("/getAll")
-    public List<TicketPurchase> getAll(){
+    public List<ArrayClassThing> getAll(){
         return allTickets;
+    }
+
+    @GetMapping("/deleteAll")
+    public void deleteAll(){
+        allTickets.clear();
     }
 }

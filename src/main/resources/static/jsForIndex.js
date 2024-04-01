@@ -7,14 +7,19 @@ let lNameFilled = false;
 let telFilled = false;
 let emailFilled = false;
 
-
-function buyTicket() {
-    let innChoose = document.getElementById("choose").value;
-    let innAmount = document.getElementById("amount").value;
-    let innfName = document.getElementById("fName").value;
-    let innlName = document.getElementById("lName").value;
-    let innTel = document.getElementById("tel").value;
-    let innEmail = document.getElementById("email").value;
+let innChoose;
+let innAmount;
+let innfName;
+let innlName;
+let innTel;
+let innEmail;
+function validateFields(){
+    innChoose = document.getElementById("choose").value;
+    innAmount = document.getElementById("amount").value;
+    innfName = document.getElementById("fName").value;
+    innlName = document.getElementById("lName").value;
+    innTel = document.getElementById("tel").value;
+    innEmail = document.getElementById("email").value;
 
     if (innChoose === "") {
         document.getElementById("chooseError").innerHTML = "<span style='color: red'>" + 'Choose a movie' + "</span>";
@@ -84,9 +89,14 @@ function buyTicket() {
     if (chooseFilled && amountFilled && fNameFilled && lNameFilled && telFilled && emailFilled) {
         allfilled = true;
     }
+}
 
+let purchasedTicket;
+console.log(purchasedTicket);
+function buyTicket() {
+    validateFields();
     if (allfilled) {
-        const purchasedTicket = {
+        purchasedTicket = {
             choose : innChoose,
             amount : innAmount,
             fname : innfName,
@@ -94,10 +104,10 @@ function buyTicket() {
             tel : innTel,
             email : innEmail
         }
+
         $.post("/save", purchasedTicket, function(){
             getAll();
         });
-        tickets.push(purchasedTicket);
         document.getElementById("choose").value = "";
         document.getElementById("amount").value = "";
         document.getElementById("fName").value = "";
@@ -105,24 +115,6 @@ function buyTicket() {
         document.getElementById("tel").value = "";
         document.getElementById("email").value = "";
 
-        function getAll() {
-            $.get( "/getAll", function( data ) {
-                printTickets();
-            });
-        }
-        function printTickets(){
-            let out = "<table><tr>" +
-                "<th>Movie</th><th>Amount</th><th>Firstname</th><th>Lastname</th><th>Tel</th><th>Email</th>" +
-                "</tr>";
-
-            for (let i=0; i<tickets.length; i++) {
-                out += "<tr>";
-                out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
-                out += "</tr>";
-            }
-        }
-
-        document.getElementById("arrayField").innerHTML = out;
         chooseFilled = false;
         amountFilled = false;
         fNameFilled = false;
@@ -130,12 +122,36 @@ function buyTicket() {
         telFilled = false;
         emailFilled = false;
         allfilled = false;
+        console.log(purchasedTicket);
     }
+}
+function getAll() {
+    $.get( "/getAll", function( data ) {
+        printTickets(data);
+    });
+}
+function printTickets(tickets){
+    let out = "<table><tr>" +
+        "<th>Movie</th><th>Amount</th><th>Firstname</th><th>Lastname</th><th>Tel</th><th>Email</th>" +
+        "</tr>";
+
+    for (let i=0; i<tickets.length; i++) {
+        out += "<tr>";
+        out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
+        out += "</tr>";
+    }
+    document.getElementById("arrayField").innerHTML = out;
 }
 allfilled = false;
 
 function deleteTickets() {
     tickets = [];
-    $.get()
+    function slettKundene() {
+        $.get( "/deleteAll", function() {
+            getAll();
+        });
+    }
+    slettKundene();
     document.getElementById("arrayField").innerHTML = "";
+    console.log(purchasedTicket);
 }

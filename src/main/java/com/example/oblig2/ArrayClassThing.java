@@ -2,26 +2,60 @@ package com.example.oblig2;
 
 import java.util.ArrayList;
 
-class TicketPurchase {
+
+public class ArrayClassThing {
     private String choose;
     private String amount;
-    private String fName;
-    private String lName;
+    private String fname;
+    private String lname;
     private String tel;
     private String email;
 
-    public TicketPurchase (String choose, String amount, String fName, String lName, String tel, String email){
-        this.choose = choose;
-        this.amount= amount;
-        this.fName = fName;
-        this.lName = lName;
-        this.tel = tel;
-        this.email = email;
+    public String getChoose() {
+        return choose;
     }
-}
 
-public class ArrayClassThing {
-    public static void main(String[] args) {
+    public String getAmount() {
+        return amount;
+    }
 
+    public String getfName() {
+        return fname;
+    }
+
+    public String getlName() {
+        return lname;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setChoose(String choose) {
+        this.choose = choose;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public void setfName(String fname) {
+        this.fname = fname;
+    }
+
+    public void setlName(String lname) {
+        this.lname = lname;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

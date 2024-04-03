@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class ArrayClassThing {
     private String choose;
     private String amount;
-    private String fname;
-    private String lname;
+    private String fName;
+    private String lName;
     private String tel;
     private String email;
 
@@ -20,11 +20,11 @@ public class ArrayClassThing {
     }
 
     public String getfName() {
-        return fname;
+        return fName;
     }
 
     public String getlName() {
-        return lname;
+        return lName;
     }
 
     public String getTel() {
@@ -43,12 +43,12 @@ public class ArrayClassThing {
         this.amount = amount;
     }
 
-    public void setfName(String fname) {
-        this.fname = fname;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public void setlName(String lname) {
-        this.lname = lname;
+    public void setlName(String lName) {
+        this.lName = lName;
     }
 
     public void setTel(String tel) {

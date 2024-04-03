@@ -96,8 +96,8 @@ function buyTicket() {
         purchasedTicket = {
             choose : innChoose,
             amount : innAmount,
-            fname : innfName,
-            lname : innlName,
+            fName : innfName,
+            lName : innlName,
             tel : innTel,
             email : innEmail
         }
@@ -134,8 +134,8 @@ function printTickets(tickets){
 
     for (let i=0; i<tickets.length; i++) {
         out += "<tr>";
-        out += "<td class='padding p-3'>"+tickets[i].choose+"</td><td class='padding p-3'>"+tickets[i].amount+"</td><td class='padding p-3'>"+tickets[i].fname+"</td>" +
-            "<td class='padding p-3'>"+tickets[i].lname+"</td><td class='padding p-3'>"+tickets[i].tel+"</td><td class='padding p-3'>"+tickets[i].email+"</td>";
+        out += "<td class='padding p-3'>"+tickets[i].choose+"</td><td class='padding p-3'>"+tickets[i].amount+"</td><td class='padding p-3'>"+tickets[i].fName+"</td>" +
+            "<td class='padding p-3'>"+tickets[i].lName+"</td><td class='padding p-3'>"+tickets[i].tel+"</td><td class='padding p-3'>"+tickets[i].email+"</td>";
         out += "</tr>";
     }
     document.getElementById("arrayField").innerHTML = out;
@@ -144,8 +144,7 @@ allfilled = false;
 function deleteTickets() {
     if (document.getElementById("arrayField").innerHTML !== ""){
         $.get( "/deleteAll", function() {
-            getAll();
+            document.getElementById("arrayField").innerHTML = "";
         });
-        document.getElementById("arrayField").innerHTML = "";
     }
 }

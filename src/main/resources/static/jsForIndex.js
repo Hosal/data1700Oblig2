@@ -1,4 +1,3 @@
-let tickets = [];
 let allfilled = false;
 let chooseFilled = false;
 let amountFilled = false;
@@ -7,6 +6,7 @@ let lNameFilled = false;
 let telFilled = false;
 let emailFilled = false;
 
+let purchasedTicket;
 let innChoose;
 let innAmount;
 let innfName;
@@ -90,9 +90,6 @@ function validateFields(){
         allfilled = true;
     }
 }
-
-let purchasedTicket;
-console.log(purchasedTicket);
 function buyTicket() {
     validateFields();
     if (allfilled) {
@@ -122,7 +119,6 @@ function buyTicket() {
         telFilled = false;
         emailFilled = false;
         allfilled = false;
-        console.log(purchasedTicket);
     }
 }
 function getAll() {
@@ -132,26 +128,24 @@ function getAll() {
 }
 function printTickets(tickets){
     let out = "<table><tr>" +
-        "<th>Movie</th><th>Amount</th><th>Firstname</th><th>Lastname</th><th>Tel</th><th>Email</th>" +
+        "<th class='padding p-3'>Movie</th><th class='padding p-3'>Amount</th><th class='padding p-3'>Firstname</th><th class='padding p-3'>Lastname</th>" +
+        "<th class='padding p-3'>Tel</th><th class='padding p-3'>Email</th>" +
         "</tr>";
 
     for (let i=0; i<tickets.length; i++) {
         out += "<tr>";
-        out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
+        out += "<td class='padding p-3'>"+tickets[i].choose+"</td><td class='padding p-3'>"+tickets[i].amount+"</td><td class='padding p-3'>"+tickets[i].fname+"</td>" +
+            "<td class='padding p-3'>"+tickets[i].lname+"</td><td class='padding p-3'>"+tickets[i].tel+"</td><td class='padding p-3'>"+tickets[i].email+"</td>";
         out += "</tr>";
     }
     document.getElementById("arrayField").innerHTML = out;
 }
 allfilled = false;
-
 function deleteTickets() {
-    tickets = [];
-    function slettKundene() {
+    if (document.getElementById("arrayField").innerHTML !== ""){
         $.get( "/deleteAll", function() {
             getAll();
         });
+        document.getElementById("arrayField").innerHTML = "";
     }
-    slettKundene();
-    document.getElementById("arrayField").innerHTML = "";
-    console.log(purchasedTicket);
 }

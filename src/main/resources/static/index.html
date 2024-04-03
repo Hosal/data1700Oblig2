@@ -7,15 +7,22 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
 </head>
-<body class="bg-light">
-<div class="container">
+<body class="bg-dark">
+<style>
+    body {
+        font-family: Arial;
+        color: white;
+        font-size: 1.2rem;
+    }
+</style>
+<div class="container" class="p-6">
     <div class="row justify-content-center">
         <div class="col-sm-6">
             <h1>Order Tickets</h1>
 
             <p>
                 <label for="choose">Choose a Movie:</label>
-                <select id="choose">
+                <select id="choose" class="form-control">
                     <option style="display:none" value="">Choose movie here...</option>
                     <option>Casablanca</option>
                     <option>Fort Apache</option>
@@ -26,7 +33,7 @@
 
             <p>
                 <label for="amount">Amount</label>
-                <input type="text" id="amount" size="2">
+                <input type="text" class="form-control" id="amount">
                 <span id="amountError"></span>
             </p>
 
@@ -34,9 +41,7 @@
                 <tr>
                     <td>
                         <label for="fName">Firstname</label>
-                    </td>
-                    <td>
-                        <input type="text" id="fName">
+                        <input type="text" class="form-control" id="fName">
                         <span id="fNameError"></span>
                     </td>
                 </tr>
@@ -44,9 +49,7 @@
                 <tr>
                     <td>
                         <label for="lName">Lastname</label>
-                    </td>
-                    <td>
-                        <input type="text" id="lName">
+                        <input type="text" class="form-control" id="lName">
                         <span id="lNameError"></span>
                     </td>
                 </tr>
@@ -54,9 +57,7 @@
                 <tr>
                     <td>
                         <label for="tel">Tel</label>
-                    </td>
-                    <td>
-                        <input type="text" id="tel">
+                        <input type="text" class="form-control" id="tel">
                         <span id="telError"></span>
                     </td>
                 </tr>
@@ -64,24 +65,23 @@
                 <tr>
                     <td>
                         <label for="email">Email</label>
-                    </td>
-                    <td>
-                        <input type="email" id="email">
+                        <input type="email" class="form-control" id="email">
                         <span id="emailError"></span>
                     </td>
                 </tr>
             </table>
-
-            <button onclick="buyTicket()">Buy ticket</button>
-
+            <div class="pt-3 pb-3">
+                <button onclick="buyTicket()" class="btn btn-primary">Buy ticket</button>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-sm-6">
             <h2>All tickets</h2>
             <div id="arrayField"></div>
-
-            <button onclick="deleteTickets()">Delete all tickets</button>
+            <div class="pt-3">
+                <button onclick="deleteTickets()" class="btn btn-danger">Delete all tickets</button>
+            </div>
         </div>
     </div>
 </div>

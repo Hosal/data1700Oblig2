@@ -13,6 +13,7 @@ let innfName;
 let innlName;
 let innTel;
 let innEmail;
+
 function validateFields(){
     innChoose = document.getElementById("choose").value;
     innAmount = document.getElementById("amount").value;
